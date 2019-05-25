@@ -8,7 +8,6 @@ defmodule Arc.Actions.SignedUploadMethod.PostObject do
   alias Arc.Utils
 
   def run(definition, %OSSFileObject{key: key, file_and_scope: {%FileObject{mime_type: content_type}, _scope}} = file_object, options) do
-    options = Keyword.put_new(options, :acl, definition.acl())
     policy = post_object_policy(definition, file_object, options)
     url = post_object_url(definition, file_object)
 
