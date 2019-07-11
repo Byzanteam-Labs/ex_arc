@@ -37,7 +37,7 @@ defmodule Arc.OSSFileObject do
   def new(definition, version, {%FileObject{}, %{}} = file_and_scope) do
     %{
       bucket: definition.storage_bucket(),
-      key: definition.key(version, file_and_scope)
+      key: definition.storage_key(version, file_and_scope)
     }
     |> new(version, file_and_scope)
   end
