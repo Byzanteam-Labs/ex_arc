@@ -1,8 +1,11 @@
 defmodule Arc.Actions.StorageCommon do
+  alias Arc.FileObject
+
   defmacro __using__(_) do
     quote do
       def storage_bucket(), do: Arc.Actions.StorageCommon.storage_bucket(__MODULE__)
       def storage_key(version, file_and_scope), do: Arc.Actions.StorageCommon.storage_key(__MODULE__, version, file_and_scope)
+      def key(version, file_and_scope), do: Arc.Actions.StorageCommon.key(__MODULE__, version, file_and_scope)
     end
   end
 
@@ -18,5 +21,9 @@ defmodule Arc.Actions.StorageCommon do
       definition.storage_dir(version, file_and_scope),
       definition.filename(version, file_and_scope)
     ])
+  end
+
+  def key(definition, version, {%FileObject{file_name: file_name}, _scope} = file_and_scope) do
+    storage_key(definition, version, file_and_scope) <> Path.extname(file_name)
   end
 end
