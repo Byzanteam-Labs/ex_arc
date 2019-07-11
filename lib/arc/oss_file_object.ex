@@ -4,7 +4,7 @@ defmodule Arc.OSSFileObject do
   stored in object-storage service.
   """
 
-  @enforce_keys [:bucket, :key, :name]
+  @enforce_keys [:bucket, :key]
   defstruct [
     # OSS fields
     # {:bucket, :key} can uniquely determine a file
