@@ -3,7 +3,7 @@ defmodule Arc.FileObject do
   `FileObject` provides a common abstraction of a file.
   """
 
-  @enforce_keys [:name]
+  @enforce_keys [:file_name]
   defstruct [
     # https://github.com/stavro/arc/blob/v0.11.0/lib/arc/definition/versioning.ex#L16
     :file_name,
