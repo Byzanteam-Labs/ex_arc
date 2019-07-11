@@ -5,7 +5,8 @@ defmodule Arc.FileObject do
 
   @enforce_keys [:name]
   defstruct [
-    :name,
+    # https://github.com/stavro/arc/blob/v0.11.0/lib/arc/definition/versioning.ex#L16
+    :file_name,
     :size,
     :mime_type,
     :path
@@ -17,9 +18,9 @@ defmodule Arc.FileObject do
     struct(__MODULE__, attrs)
   end
 
-  def new(%{name: name} = attrs) do
+  def new(%{file_name: file_name} = attrs) do
     attrs
-    |> Map.put(:mime_type, Utils.mime_type(name))
+    |> Map.put(:mime_type, Utils.mime_type(file_name))
     |> new()
   end
 end

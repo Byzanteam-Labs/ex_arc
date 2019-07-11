@@ -48,7 +48,7 @@ defmodule Arc.OSSFileObject do
     new(definition, version, {file_object, scope})
   end
 
-  defp key(definition, version, {%FileObject{name: name}, _scope} = file_and_scope) do
-    definition.storage_key(version, file_and_scope) <> Path.extname(name)
+  defp key(definition, version, {%FileObject{file_name: file_name}, _scope} = file_and_scope) do
+    definition.storage_key(version, file_and_scope) <> Path.extname(file_name)
   end
 end
