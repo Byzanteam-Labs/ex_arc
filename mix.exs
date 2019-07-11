@@ -2,7 +2,7 @@ defmodule ExArc.MixProject do
   use Mix.Project
 
   @project_host "https://github.com/GreenNerd-Labs/ex_arc"
-  @version "0.0.2"
+  @version "0.0.3"
 
   def project do
     [
